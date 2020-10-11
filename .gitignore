@@ -108,3 +108,5 @@ package-lock.json
 
 # Intellij or WebStorm
 .idea
+
+*.js
