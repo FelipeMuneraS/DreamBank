@@ -2,7 +2,7 @@ import express = require('express');
 import {router} from "../../interfaces/controllers/LoginController";
 
 const application: express.Application = express();
-const port: number = 3000;
+const port: string | number = process.env.PORT || 3000;
 
 application.use(express.json());
 application.use(router);
