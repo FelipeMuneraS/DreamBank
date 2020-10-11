@@ -1,7 +1,10 @@
 export class Transaction {
-    transactionId: string;
-    businessCommerce: string;
-    amount: number;
-    state: string;
-    date: Date;
+    public idTransaction: string;
+    public businessCommerce: string;
+    public amount: number;
+    public state: string;
+    public date: string;
+    public time: string;
+    public accountIdAccount: string;
+    public productRequestIdProductRequest: string;
 }

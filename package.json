@@ -2,10 +2,12 @@
   "name": "dreambank",
   "version": "1.0.0",
   "description": "Application on NodeJs with Express And Clean Architecture",
-  "main": "index.js",
+  "main": "src/infrastructure/server/Server.ts",
   "scripts": {
+    "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "npx ts-node src/infrastructure/server/Server.ts"
+    "start": "tsc && npx ts-node src/infrastructure/server/Server.ts",
+    "dev": "tsc && nodemon -x npx ts-node src/config/server.ts"
   },
   "keywords": [
     "Express",
@@ -15,10 +17,17 @@
   "author": "Felipe Munera",
   "license": "ISC",
   "dependencies": {
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^14.11.8",
     "@types/typescript": "^2.0.0",
     "express": "^4.17.1",
     "express-validator": "^6.6.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.2.5",
     "sequelize": "^6.3.5",
     "typescript": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.8"
   }
 }

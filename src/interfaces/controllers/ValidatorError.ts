@@ -1,9 +1,10 @@
 import express = require('express');
 
 export default class ValidatorError {
-    sendErrors(errors: Object[], response: express.Response){
+
+    public sendErrors(errors: any, response: express.Response) {
         let message = [];
-        for(let error of errors) {
+        for (let error of errors) {
             message.push(error['msg']);
         }
         response.status(400);

@@ -1,7 +1,5 @@
-import { Transaction } from "./Transaction";
-
-export class ProductRequest{
-    productRequestdId: string;
+export class ProductRequest {
+    idProductRequest: string;
     type: string;
-    transactions: Transaction[];
+    userNumberId: string;
 }
