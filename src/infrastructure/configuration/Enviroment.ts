@@ -4,3 +4,6 @@ export const dataBaseName: string = process.env.DATA_BASE_NAME || '';
 export const dataBaseUser: string = process.env.DATA_BASE_USER || '';
 export const dataBasePassword: string = process.env.DATA_BASE_PASSWORD || '';
 export const secretKey: string = process.env.SECRET_KEY_JSON_WEB_TOKEN || 'secret';
+export const redisHost: string = process.env.REDIS_HOST || '';
+export const redisPort: string = process.env.REDIS_PORT || '';
+export const redisPassword: string = process.env.REDIS_PASSWORD || '';
