@@ -1,1 +1,1 @@
-web: npm start
+web: npx ts-node src/infrastructure/server/Server.ts

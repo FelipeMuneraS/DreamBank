@@ -6,8 +6,8 @@
   "scripts": {
     "tsc": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsc && npx ts-node src/infrastructure/server/Server.ts",
-    "start": "tsc && nodemon -x npx ts-node src/infrastructure/server/Server.ts"
+    "start": "npx ts-node src/infrastructure/server/Server.ts",
+    "dev": "tsc && nodemon -x npx ts-node src/infrastructure/server/Server.ts"
   },
   "keywords": [
     "Express",
@@ -32,6 +32,6 @@
     "@types/express": "^4.17.8"
   },
   "engines": {
-    "node": "10.x"
+    "node": "10.19.0"
   }
 }
