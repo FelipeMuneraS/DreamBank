@@ -30,7 +30,8 @@ accountListController.post('/getAccounts',
         } else {
             validatorError.sendErrors(errors, response);
         }
-    });
+    }
+);
 
 
 accountListController.use('/getAccounts', (request: express.Request, response: express.Response) => {

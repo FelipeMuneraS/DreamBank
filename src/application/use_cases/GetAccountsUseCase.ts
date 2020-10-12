@@ -3,7 +3,6 @@ import {AccountModel} from "../../infrastructure/orm/sequelize/models/AccountMod
 export class GetAccountsUseCase {
     async getAccounts(idNumber: string): Promise<any> {
         let objectResponse: any;
-        console.log(idNumber);
         let accounts = await AccountModel.findAll({
             where: {
                 userNumberId: idNumber
@@ -18,7 +17,6 @@ export class GetAccountsUseCase {
         } else {
             objectResponse = { error: "You dont have accounts"};
         }
-        console.log(objectResponse);
         return objectResponse;
     }
 }
