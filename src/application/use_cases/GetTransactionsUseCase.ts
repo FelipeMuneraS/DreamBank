@@ -1,4 +1,4 @@
-import {TransactionModel} from "../../infrastructure/orm/sequelize/models/TransactionModel";
+import {TransactionModel} from '../../infrastructure/orm/sequelize/models/TransactionModel';
 
 export class GetTransactionsUseCase {
     async getTransactions(idNumber: string, idAccount: string): Promise<any> {
@@ -22,7 +22,7 @@ export class GetTransactionsUseCase {
             }
             objectResponse = { transactions: transactionArray};
         } else {
-            objectResponse = { error: "You dont have transactions"};
+            objectResponse = { error: 'You dont have transactions'};
         }
         return objectResponse;
     }

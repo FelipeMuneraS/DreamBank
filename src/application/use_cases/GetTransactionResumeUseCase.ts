@@ -1,4 +1,4 @@
-import {TransactionModel} from "../../infrastructure/orm/sequelize/models/TransactionModel";
+import {TransactionModel} from '../../infrastructure/orm/sequelize/models/TransactionModel';
 
 export class GetTransactionResumeUseCase {
     async getResume(idNumber: string, idAccount: string): Promise<any> {
@@ -17,7 +17,7 @@ export class GetTransactionResumeUseCase {
             transactionAverage = transactionAverage / transactions.length;
             objectResponse = {transactionAverage: transactionAverage};
         } else {
-            objectResponse = {error: "You dont have transactions"};
+            objectResponse = {error: 'You dont have transactions'};
         }
         return objectResponse;
     }

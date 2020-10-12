@@ -1,10 +1,10 @@
 import express = require('express');
 
-import {UserModel} from "../../infrastructure/orm/sequelize/models/UserModel";
-import {secretKey} from "../../infrastructure/configuration/Enviroment";
-import {JwtWithRedis} from "../../infrastructure/security/JwtWithRedis";
-import JWTRedis from "jwt-redis";
-import {jwtOptions} from "../../infrastructure/configuration/Constants";
+import {UserModel} from '../../infrastructure/orm/sequelize/models/UserModel';
+import {secretKey} from '../../infrastructure/configuration/Enviroment';
+import {JwtWithRedis} from '../../infrastructure/security/JwtWithRedis';
+import JWTRedis from 'jwt-redis';
+import {jwtOptions} from '../../infrastructure/configuration/Constants';
 
 const jwtWithRedis: JWTRedis = JwtWithRedis.getInstance().getJwtWithRedis();
 

@@ -1,3 +1,3 @@
-import {SignOptions} from "jsonwebtoken";
+import {SignOptions} from 'jsonwebtoken';
 
-export const jwtOptions: SignOptions = {expiresIn: "120s"};
+export const jwtOptions: SignOptions = {expiresIn: '120s'};

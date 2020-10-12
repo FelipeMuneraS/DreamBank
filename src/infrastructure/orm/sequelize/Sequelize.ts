@@ -28,7 +28,7 @@ export class DataBase {
                 logging: false
             });
         this.dataBase.authenticate().then(async () => {
-            console.log("DB connected")
+            console.log('DB connected')
         }).catch((error) => console.error(error));
     }
 

@@ -1,10 +1,10 @@
 import express = require('express');
-import {BadRequest} from "./validators/BadRequest";
-import {jwtMiddlewareValidator} from "./validators/JwtMiddlewareValidator";
-import {GetAccountsUseCase} from "../../application/use_cases/GetAccountsUseCase";
-import {checkSchema, validationResult} from "express-validator";
-import {AccountListValidator} from "./validators/AccountListValidator";
-import ValidatorError from "./validators/ValidatorError";
+import {BadRequest} from './validators/BadRequest';
+import {jwtMiddlewareValidator} from './validators/JwtMiddlewareValidator';
+import {GetAccountsUseCase} from '../../application/use_cases/GetAccountsUseCase';
+import {checkSchema, validationResult} from 'express-validator';
+import {AccountListValidator} from './validators/AccountListValidator';
+import ValidatorError from './validators/ValidatorError';
 
 
 export const accountListController: express.Router = express.Router();
@@ -21,7 +21,6 @@ accountListController.post('/getAccounts',
             if (errors && !errors.length) {
                 getAccountsUseCase.getAccounts(request.body.idNumber).then((responseObject) => {
                     response.setHeader('authorization', 'Bearer ' + request.body.tokenObject.newToken);
-                    response.status(200);
                     response.send(responseObject);
                 });
             } else {

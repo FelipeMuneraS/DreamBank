@@ -1,9 +1,9 @@
 import express = require('express');
-import {BadRequest} from "./validators/BadRequest";
-import {LoginValidator} from "./validators/LoginValidator";
-import {checkSchema, validationResult} from "express-validator";
-import ValidatorError from "./validators/ValidatorError";
-import {LoginUseCase} from "../../application/use_cases/LoginUseCase";
+import {BadRequest} from './validators/BadRequest';
+import {LoginValidator} from './validators/LoginValidator';
+import {checkSchema, validationResult} from 'express-validator';
+import ValidatorError from './validators/ValidatorError';
+import {LoginUseCase} from '../../application/use_cases/LoginUseCase';
 
 export const loginController: express.Router = express.Router();
 const loginUseCase: LoginUseCase = new LoginUseCase();
