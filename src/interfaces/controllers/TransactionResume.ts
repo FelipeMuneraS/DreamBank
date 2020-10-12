@@ -4,21 +4,21 @@ import {checkSchema, validationResult} from "express-validator";
 import ValidatorError from "./validators/ValidatorError";
 import {jwtMiddlewareValidator} from "./validators/JwtMiddlewareValidator";
 import {TransactionListValidator} from "./validators/TransactionListValidator";
-import {GetTransactionsUseCase} from "../../application/use_cases/GetTransactionsUseCase";
+import {GetTransactionResumeUseCase} from "../../application/use_cases/GetTransactionResumeUseCase";
 
-export const transactionListController: express.Router = express.Router();
+export const transactionResumeController: express.Router = express.Router();
 const badRequest: BadRequest = new BadRequest();
 const validatorError: ValidatorError = new ValidatorError();
-const getTransactionsUseCase: GetTransactionsUseCase = new GetTransactionsUseCase();
+const getTransactionResumeUseCase: GetTransactionResumeUseCase = new GetTransactionResumeUseCase();
 
-transactionListController.post('/getTransactionList',
+transactionResumeController.post('/getTransactionAverage',
     checkSchema(TransactionListValidator),
     jwtMiddlewareValidator,
     (request: express.Request, response: express.Response) => {
         if (request.body.idNumber == request.body.tokenObject.idNumber) {
             let errors = validationResult(request)['errors'];
             if (errors && !errors.length) {
-                getTransactionsUseCase.getTransactions(request.body.idNumber, request.body.idAccount)
+                getTransactionResumeUseCase.getResume(request.body.idNumber, request.body.idAccount)
                     .then((responseObject) => {
                         response.send(responseObject);
                     });
@@ -31,7 +31,6 @@ transactionListController.post('/getTransactionList',
     }
 );
 
-
-transactionListController.use('/getTransactionList', (request: express.Request, response: express.Response) => {
+transactionResumeController.use('/getTransactionAverage', (request: express.Request, response: express.Response) => {
     badRequest.badRequest(response);
 });

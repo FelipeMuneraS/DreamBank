@@ -1,4 +1,3 @@
-import {AccountModel} from "../../infrastructure/orm/sequelize/models/AccountModel";
 import {TransactionModel} from "../../infrastructure/orm/sequelize/models/TransactionModel";
 
 export class GetTransactionsUseCase {

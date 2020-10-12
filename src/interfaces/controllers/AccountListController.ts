@@ -16,19 +16,19 @@ accountListController.post('/getAccounts',
     checkSchema(AccountListValidator),
     jwtMiddlewareValidator,
     (request: express.Request, response: express.Response) => {
-        let errors = validationResult(request)['errors'];
-        if (errors && !errors.length) {
-            if (request.body.idNumber == request.body.tokenObject.idNumber) {
+        if (request.body.idNumber == request.body.tokenObject.idNumber) {
+            let errors = validationResult(request)['errors'];
+            if (errors && !errors.length) {
                 getAccountsUseCase.getAccounts(request.body.idNumber).then((responseObject) => {
                     response.setHeader('authorization', 'Bearer ' + request.body.tokenObject.newToken);
                     response.status(200);
                     response.send(responseObject);
                 });
             } else {
-                response.sendStatus(401);
+                validatorError.sendErrors(errors, response);
             }
         } else {
-            validatorError.sendErrors(errors, response);
+            response.sendStatus(401);
         }
     }
 );
