@@ -1,21 +1,25 @@
 import { Schema } from 'express-validator';
 
-export const TransactionListValidator: Schema = {
+export const CreateProductValidator: Schema = {
     idNumber: {
         in: 'body',
         errorMessage: 'idNumber is required',
         isLength: {
             options: {
-                min: 1,
+                min: 5,
                 max: 15
             }
         }
     },
-    idAccount: {
+    type: {
         in: 'body',
-        errorMessage: 'idAccount is required',
+        errorMessage: 'type is required',
         isLength: {
-            options: { min: 1, max: 40 }
-        }
+            options: {
+                min: 1,
+                max: 3
+            }
+        },
+
     }
 }

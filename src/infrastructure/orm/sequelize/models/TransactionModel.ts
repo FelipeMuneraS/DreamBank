@@ -1,5 +1,5 @@
-import {DataTypes, Model} from "sequelize";
-import {DataBase} from "../Sequelize";
+import {DataTypes, Model} from 'sequelize';
+import {DataBase} from '../Sequelize';
 
 const dataBaseCon = DataBase.getInstance().getDataBase();
 

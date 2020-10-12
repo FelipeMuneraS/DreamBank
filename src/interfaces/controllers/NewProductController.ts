@@ -1,28 +1,33 @@
 import express = require('express');
 import {BadRequest} from './validators/BadRequest';
-import {checkSchema, validationResult} from 'express-validator';
-import ValidatorError from './validators/ValidatorError';
 import {jwtMiddlewareValidator} from './validators/JwtMiddlewareValidator';
-import {TransactionListValidator} from './validators/TransactionListValidator';
-import {GetTransactionsUseCase} from '../../application/use_cases/GetTransactionsUseCase';
+import {checkSchema, validationResult} from 'express-validator';
+import {AccountListValidator} from './validators/AccountListValidator';
+import ValidatorError from './validators/ValidatorError';
+import {CreateProductUseCase} from '../../application/use_cases/CreateProductUseCase';
 
-export const transactionListController: express.Router = express.Router();
+
+export const newProductController: express.Router = express.Router();
 const badRequest: BadRequest = new BadRequest();
 const validatorError: ValidatorError = new ValidatorError();
-const getTransactionsUseCase: GetTransactionsUseCase = new GetTransactionsUseCase();
+const createProductUseCase: CreateProductUseCase = new CreateProductUseCase();
+const types = ['1', '2', '3', '4'];
 
-transactionListController.post('/getTransactionList',
-    checkSchema(TransactionListValidator),
+newProductController.post('/newProduct',
+    checkSchema(AccountListValidator),
     jwtMiddlewareValidator,
     (request: express.Request, response: express.Response) => {
         if (request.body.idNumber == request.body.tokenObject.idNumber) {
             let errors = validationResult(request)['errors'];
             if (errors && !errors.length) {
-                getTransactionsUseCase.getTransactions(request.body.idNumber, request.body.idAccount)
-                    .then((responseObject) => {
+                if (types.includes(request.body.type)) {
+                    createProductUseCase.create(request.body.idNumber, request.body.type).then((responseObject) => {
                         response.setHeader('authorization', 'Bearer ' + request.body.tokenObject.newToken);
                         response.send(responseObject);
                     });
+                } else {
+                    response.sendStatus(400);
+                }
             } else {
                 validatorError.sendErrors(errors, response);
             }
@@ -33,6 +38,6 @@ transactionListController.post('/getTransactionList',
 );
 
 
-transactionListController.use('/getTransactionList', (request: express.Request, response: express.Response) => {
+newProductController.use('/newProduct', (request: express.Request, response: express.Response) => {
     badRequest.badRequest(response);
 });

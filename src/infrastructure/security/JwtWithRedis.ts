@@ -1,7 +1,7 @@
 import redis = require('redis');
 import jwtWithRedisDefault = require('jwt-redis');
-import JWTRedis from "jwt-redis";
-import {redisHost, redisPassword, redisPort} from "../configuration/Enviroment";
+import JWTRedis from 'jwt-redis';
+import {redisHost, redisPassword, redisPort} from '../configuration/Enviroment';
 
 export class JwtWithRedis {
     private static instance: JwtWithRedis;
@@ -13,7 +13,7 @@ export class JwtWithRedis {
             port: Number(redisPort),
             auth_pass: redisPassword
         });
-        redisClient.on("error", error => {
+        redisClient.on('error', error => {
             console.error(error);
         });
         this.jwtWithRedis = new jwtWithRedisDefault.default(redisClient);

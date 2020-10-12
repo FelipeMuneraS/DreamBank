@@ -1,9 +1,9 @@
-import { Schema } from "express-validator";
+import { Schema } from 'express-validator';
 
 export const LoginValidator: Schema = {
     idNumber: {
-        in: "body",
-        errorMessage: "idNumber is required",
+        in: 'body',
+        errorMessage: 'idNumber is required',
         isLength: {
             options: {
                 min: 1,
@@ -12,8 +12,8 @@ export const LoginValidator: Schema = {
         }
     },
     password: {
-        in: "body",
-        errorMessage: "password is required",
+        in: 'body',
+        errorMessage: 'password is required',
         isLength: {
             options: { min: 1, max: 256 }
         }

@@ -1,4 +1,4 @@
-import {AccountModel} from "../../infrastructure/orm/sequelize/models/AccountModel";
+import {AccountModel} from '../../infrastructure/orm/sequelize/models/AccountModel';
 
 export class GetAccountsUseCase {
     async getAccounts(idNumber: string): Promise<any> {
@@ -15,7 +15,7 @@ export class GetAccountsUseCase {
             }
             objectResponse = { accounts: idAccountArray};
         } else {
-            objectResponse = { error: "You dont have accounts"};
+            objectResponse = { error: 'You dont have accounts'};
         }
         return objectResponse;
     }
